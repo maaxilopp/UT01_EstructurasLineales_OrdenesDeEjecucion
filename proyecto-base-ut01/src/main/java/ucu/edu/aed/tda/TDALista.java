@@ -110,6 +110,7 @@ public interface TDALista<T> {
      * @param comparator el comparador que define el orden de los elementos
      * @return una lista ordenada según el criterio indicado
      */
+
     TDALista<T> ordenar(Comparator<T> comparator);
 
     /**
