@@ -37,5 +37,12 @@ public class Libro {
         this.stock += 1;
     }
 
+    public void agregarEjemplares(int cantidad) {
+        this.stock += cantidad;
+    }
 
+    public void prestarEjemplares(int cantidad) {
+        this.stock -= cantidad;
+    }
 }
+
