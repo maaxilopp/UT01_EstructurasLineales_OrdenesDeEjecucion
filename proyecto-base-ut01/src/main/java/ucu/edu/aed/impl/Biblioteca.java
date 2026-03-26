@@ -9,6 +9,9 @@ public class Biblioteca {
         this.catalogo = new ListaEnlazada<Libro>();
     }
 
+    public ListaEnlazada<Libro> getCatalogo() {
+        return catalogo;
+    }
     public void agregarLibro(Libro libro){
 
         Predicate<Libro> criterio = new Predicate<Libro>() {
