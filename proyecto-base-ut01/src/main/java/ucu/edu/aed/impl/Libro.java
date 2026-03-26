@@ -3,10 +3,10 @@ package ucu.edu.aed.impl;
 public class Libro {
     private String titulo;
     private String codigo;
-    private int precio;
+    private double precio;
     private int stock;
 
-    public Libro(String titulo, String codigo, int precio, int stock) {
+    public Libro(String titulo, String codigo, double precio, int stock) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.precio = precio;
@@ -25,7 +25,7 @@ public class Libro {
         return codigo;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
