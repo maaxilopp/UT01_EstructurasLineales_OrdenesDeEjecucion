@@ -1,0 +1,62 @@
+Consideraciones en cada caso:
+
+1. Costo de memoria:
+
+   Arreglo:  Al desconocer la cantidad de libros que se almacenarán,
+             sería necesario estimar un tamaño inicial.
+             Esto resulta poco práctico, si la estimación es insuficiente,
+             el arreglo debería redimensionarse (generalmente duplicando su tamaño aunque sea por solo un libro más),
+             y si es excesiva, se estaría reservando memoria innecesariamente.
+
+   Lista enlazada: A diferencia del arreglo, no requiere estimar un tamaño inicial,
+                   ya que crece dinámicamente según se agreguen libros.
+                   Sin embargo, cada nodo no solo almacena la información del libro,
+                   sino también un puntero al siguiente nodo,
+                   lo que implica un mayor consumo de memoria por elemento.
+
+2. Consideraciones sobre la cantidad de libros soportada:
+
+   Arreglo: Al tener un tamaño fijo, la cantidad de libros soportada
+            está limitada al tamaño establecido inicialmente. Si se requiere expandir,
+            se consume memoria adicional innecesaria debido al redimensionamiento.
+
+   Lista enlazada: Al no tener un tamaño fijo, puede almacenar tantos libros
+                   como la memoria disponible del sistema lo permita,
+                   sin restricciones predefinidas.
+
+3. Consideraciones de eficiencia para cada operación según la implementación.
+
+   1. Incorporar un nuevo libro:
+
+      Arreglo: Se puede insertar al final en O(1),
+               pero si se requiere mantener el orden alfabético por título,
+               es necesario recorrer y desplazar elementos, resultando en O(n).
+               Además, está sujeto a las limitaciones de tamaño
+               mencionadas anteriormente.
+
+      Lista enlazada:  Si no importa el orden, se inserta al principio en O(1).
+                       Si se requiere mantener orden alfabético por título,
+                       también es O(n) ya que hay que recorrerla para encontrar
+                       la posición correcta.
+
+   2. Agregar ejemplares (stock) a un libro existente.
+
+      En ambos casos es necesario recorrer la estructura para encontrar el libro,
+      resultando en O(n). Sin embargo, si se dispone de un índice o referencia
+      directa al libro, el arreglo permite acceso en O(1) gracias al acceso por índice,
+      siendo más eficiente que la lista enlazada en ese escenario.
+
+   3. Reducir ejemplares (stock) de un libro existente (préstamo o baja)
+
+     Al igual que agregar stock, en ambos casos es necesario recorrer la estructura
+     para encontrar el libro, resultando en O(n).
+     Si se dispone de un índice o referencia directa,
+     el arreglo permite acceso en O(1), siendo más eficiente.
+
+   4. Listar todos los libros ordenados por título, mostrando además su stock
+
+      En ambos casos hay que recorrer toda la estructura y ordenarla.
+      Ordenar es O(n ^2) con un doble for, como en el ejercicio 7.
+      En el arreglo, ordenar es más eficiente ya que permite acceso directo por índice.
+      En la lista enlazada, ordenar es más costoso al no tener acceso directo,
+      por lo que para esta operación el arreglo es más conveniente.
