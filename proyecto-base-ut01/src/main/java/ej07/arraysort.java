@@ -1,5 +1,7 @@
 package ej07;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.File;
 
@@ -16,6 +18,7 @@ public class arraysort{
             for (int i = 0; i < n; i++) {
                 arreglo[i] = scanner.nextInt(); // lleno el array con los elementos  del archivo
             }
+            System.out.println("Lista original: " + (Arrays.toString(arreglo)));
             for (int u = 0; u < n - 1; u++) {
                 for (int j = n - 1; j >= u + 1; j--) {
                     contador += 1;
@@ -27,6 +30,7 @@ public class arraysort{
                     }
                 }
             }
+            System.out.println("Lista ordenada: " + (Arrays.toString(arreglo)));
             System.out.println("El primer elemento del archivo (ósea n) es: " + n);
             System.out.println("Cantidad de veces que el loop es evaluado: " + contador);
             System.out.println("Intercambios realizados: " + intercambios);
