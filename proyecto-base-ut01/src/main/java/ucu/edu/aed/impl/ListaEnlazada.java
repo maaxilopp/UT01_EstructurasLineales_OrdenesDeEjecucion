@@ -47,8 +47,14 @@ public class ListaEnlazada<T> implements TDALista<T> {
 
     @Override
     public T obtener(int index) {
-        return null;
-    }
+      Nodo<T> actual = primero;
+      int contador = 0;
+      while(index != contador){
+         contador++;
+         actual = actual.getSiguiente();
+         }
+         return actual.getDato();
+        }
 
     @Override
     public T remover(int index) {
@@ -101,10 +107,17 @@ public class ListaEnlazada<T> implements TDALista<T> {
 
     @Override
     public int tamaño() {
-        return 0;
+        Nodo<T> actual = primero;
+        int contador = 0;
+        while (actual != null) {
+            actual = actual.getSiguiente();
+            contador++;
+        }
+        return contador;
     }
 
-    @Override
+
+        @Override
     public boolean esVacio() {
         return false;
     }
