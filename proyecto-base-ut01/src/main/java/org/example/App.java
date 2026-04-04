@@ -31,6 +31,7 @@ public class App {
     }
 
     private static void procesarPrestamos(Biblioteca biblioteca) {
+        System.out.println("\nTRAMITES QUE FUERON REALIZADOS EN LA BIBLIOTECA RECIENTEMENTE\n");
         FileUtils.leerLineas("prestamos.txt", linea -> {
             String[] partes = linea.split(",");
             if (partes.length < 3) return;
@@ -63,6 +64,7 @@ public class App {
     }
 
     private static void mostrarCatalogo(Biblioteca biblioteca) {
+        System.out.println("\nCATÁLOGO ACTUALIZADO DE LIBROS EN LA BIBLIOTECA\n");
         for (int i = 0; i < biblioteca.getCatalogo().tamaño(); i++) {
             Libro libro = biblioteca.getCatalogo().obtener(i);
             System.out.println("Titulo: " + libro.getTitulo()
