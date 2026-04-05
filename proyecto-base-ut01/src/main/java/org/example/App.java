@@ -3,6 +3,7 @@ package org.example;
 import ucu.edu.aed.impl.Biblioteca;
 import ucu.edu.aed.impl.Libro;
 import ucu.edu.aed.utils.FileUtils;
+import ucu.edu.aed.impl.EnumTipoTramite;
 
 public class App {
     public static void main(String[] args) {
@@ -25,7 +26,7 @@ public class App {
 
                 biblioteca.agregarLibro(new Libro(titulo, codigo, precio, stock));
             } catch(NumberFormatException e){
-                System.out.println("En la linea de adquisiciones numero: " + linea + ", hay un error :(");
+                System.out.println("Error al procesar esta linea, el formato es inválido. :((");
             }
         });
     }
@@ -46,31 +47,28 @@ public class App {
                     return;
                 }
 
-                if (tipo.equalsIgnoreCase("PRESTAMO")) {
-                    if (existente.getStock() >= cantidad) {
-                        existente.prestarEjemplares(cantidad);
-                        System.out.println("PRESTAMO: " + existente.getTitulo() + " | Stock: " + existente.getStock());
+                EnumTipoTramite tipoTramite = EnumTipoTramite.valueOf(tipo.toUpperCase());
+
+                if (tipoTramite == EnumTipoTramite.PRESTAMO) {
+                    if (biblioteca.prestarLibro(codigo, cantidad)) {
+                        System.out.println("PRESTAMO: " + existente.getTitulo() + " | Stock restante: " + existente.getStock());
                     } else {
                         System.out.println("SIN STOCK: " + existente.getTitulo());
                     }
-                } else if (tipo.equalsIgnoreCase("DEVOLUCION")) {
-                    existente.agregarEjemplares(cantidad);
-                    System.out.println("DEVOLUCION: " + existente.getTitulo() + " | Stock: " + existente.getStock());
+                } else if (tipoTramite == EnumTipoTramite.DEVOLUCION) {
+                    biblioteca.devolverLibro(codigo, cantidad);
+                    System.out.println("DEVOLUCION: " + existente.getTitulo() + " | Stock actualizado: " + existente.getStock());
                 }
             } catch(NumberFormatException e){
-                System.out.println("En la linea de prestamos numero: " + linea + ", hay un error :(");
+                System.out.println("En esta linea de prestamos hay un error de formato en el texto ingresado:(");
+            }catch(IllegalArgumentException e){
+                System.out.println("El tramite ingresado en esta linea no existe en la biblioteca :(, solo aceptamos PRESTAMO o DEVOLUCION.");
             }
         });
     }
 
     private static void mostrarCatalogo(Biblioteca biblioteca) {
         System.out.println("\nCATÁLOGO ACTUALIZADO DE LIBROS EN LA BIBLIOTECA\n");
-        for (int i = 0; i < biblioteca.getCatalogo().tamaño(); i++) {
-            Libro libro = biblioteca.getCatalogo().obtener(i);
-            System.out.println("Titulo: " + libro.getTitulo()
-                    + " | Codigo: " + libro.getCodigo()
-                    + " | Precio: " + libro.getPrecio()
-                    + " | Stock: " + libro.getStock());
-        }
+        biblioteca.mostrarCatalogo();
     }
 }
