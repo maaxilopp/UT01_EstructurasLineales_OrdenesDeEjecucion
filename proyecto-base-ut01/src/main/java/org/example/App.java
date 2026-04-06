@@ -32,7 +32,7 @@ public class App {
     }
 
     private static void procesarPrestamos(Biblioteca biblioteca) {
-        System.out.println("\nTRAMITES QUE FUERON REALIZADOS EN LA BIBLIOTECA RECIENTEMENTE\n");
+        System.out.println("\nTRAMITES\n");
         FileUtils.leerLineas("prestamos.txt", linea -> {
             String[] partes = linea.split(",");
             if (partes.length < 3) return;
