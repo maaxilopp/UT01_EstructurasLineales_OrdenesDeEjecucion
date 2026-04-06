@@ -1,3 +1,16 @@
+El algoritmo se encarga de validar secuencias de corchetes mediante
+el uso de una pila.
+
+PRECONDICIONES: - La lista de entrada no es vacía, sino devolverá True de todas
+                  formas
+                - La lista de entrada únicamente puede contener corchetes.
+
+POSTCONDICIONES: -  Si la secuencia arranca con el corchete de apertura, y tiene la
+                    misma cantidad de corchetes de apertura que de cierre, retorna True,
+                    en cualquier otro caso retorna false.
+
+PSEUDOCODIGO:
+
 public boolean controlCorchetes(Lista <char> listaDeEntrada) {
 pila = nueva pila ();
 
