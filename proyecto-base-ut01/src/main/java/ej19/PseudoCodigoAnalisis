@@ -1,7 +1,24 @@
-El algoritmo se encarga de validar secuencias de corchetes mediante
-el uso de una pila.
+LENGUAJE NATURAL: El algoritmo recibe una lista de caracteres que
+                  contiene corchetes y crea una pila vacía. Recorre
+                  La lista desde el primer elemento hasta el ultimo.
 
-PRECONDICIONES: - La lista de entrada no es vacía, sino devolverá True de todas
+                  En cada iteración, Si el elemento actual es un corchete de cierre (})
+                  y la pila está vacía (es decir, no hay ningún corchete de apertura
+                  previo), entonces retorna false, porque se está intentando cerrar
+                  algo que nunca se abrió. Si el elemento actual es un corchete de
+                  apertura ({), lo agrega en la pila. Si el elemento actual es un corchete
+                  de cierre (}) y la pila no está vacía, entonces desapila un elemento,
+                  eliminando el último corchete de apertura que estaba pendiente de cerrar.
+
+                  Cuando ya se recorre toda la lista, Si la pila está vacía, retorna true,
+                  lo que indica que todos los corchetes fueron correctamente abiertos y
+                  cerrados. Si la pila no está vacía, retorna false, porque quedaron
+                  corchetes de apertura sin cerrar.
+
+
+
+PRECONDICIONES: - Aunque no es una precondición ya que el programa funciona igual,
+                  se recomienda que la lista no sea vacía, en caso de que sea, devolverá True de todas
                   formas pero no tendría sentido el algoritmo.
                 - La lista de entrada únicamente puede contener corchetes.
                 - La pila debe estar vacía al principio
