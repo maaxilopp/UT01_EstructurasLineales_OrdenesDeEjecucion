@@ -1,0 +1,30 @@
+Antes de agregar el elemento tenemos que tener en cuenta las siguientes consideraciones:
+-Definimos tope como un contador en 0 que nos va a ayudar para saber la cantidad de elementos que tenemos actualmente en el arreglo, primero y ultimo como enteros como referencias dentro del vector.
+-Si el vector esta vacio se agrega el elemento al principio del vector, el ultimo y el primero quedan apuntado a la posicion 0
+-Si el vector contiene elementos pero el contador es menor al largo del vector, entonces actualizamos el valor de ultimo = (ultimo + 1) mod largo(arreglo) e insertamos el elemento en arreglo[ultimo]
+-Si el tope es igual al largo del arreglo, entonces no va a ser posible insertar en el vector.
+
+PRECONDICIONES:
+-Que la cola exista
+-El elemento a insertar cumpla con el criterio para poder ser insertado.
+-La Cola no debe estar llena
+
+POSTCONDICIONES:
+-El elemento debe ser insertado en la posicion siguiente al ultimo
+-El indice ultimo debe ser actualizado
+-El indice primero no debe ser alterado
+
+proc PoneEnCola(unElemento){
+if tope = largoArreglo
+    mostrar "cola llena"
+else
+    primero <-- 0 //posicion 0 del arreglo
+    if cola.esVacia = true
+        ultimo <-- 0
+    else
+        ultimo <-- ultimo +1 mod largo(arreglo)
+    endif
+    arreglo[ultimo] <-- unElemento //insertamos el elemento en el indice del ultimo
+    tope + 1
+endif
+}
