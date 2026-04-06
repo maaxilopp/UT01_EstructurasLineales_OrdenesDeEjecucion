@@ -2,14 +2,16 @@ El algoritmo se encarga de validar secuencias de corchetes mediante
 el uso de una pila.
 
 PRECONDICIONES: - La lista de entrada no es vacía, sino devolverá True de todas
-                  formas
+                  formas pero no tendría sentido el algoritmo.
                 - La lista de entrada únicamente puede contener corchetes.
                 - La pila debe estar vacía al principio
 
-POSTCONDICIONES: -  Si la secuencia arranca con el corchete de apertura, y tiene la
-                    misma cantidad de corchetes de apertura que de cierre, retorna True,
-                    en cualquier otro caso retorna false.
-                 - No se altera la lista de entrada.
+POSTCONDICIONES: - No se modifica la lista de entrada
+                 - Retornará true si la lista es vacía o si la secuencia
+                   está bien balanceada, por ende la pila esta vacía
+                 - Retornará false si la lista de entrada empieza con un corchete
+                   de cierre o si la secuencia no está bien balanceada, por ende
+                   la pila no está vacía
 
 PSEUDOCODIGO:
 
@@ -38,6 +40,6 @@ else{
 
 ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n).
 
-PEOR CASO: O(n)
+PEOR CASO: O(n).
 
 MEJOR CASO: O(1).
