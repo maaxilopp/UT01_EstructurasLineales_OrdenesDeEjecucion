@@ -1,10 +1,9 @@
 QuitaDeCola()
 
-- Lenguaje natural: Si la cola está vacía, se devuelve null porque no hay ningún elemento para sacar. Si no está vacía,
-primero se guarda el nodo que está al principio de la cola, porque es el que vamos a quitar. Después hacemos que primero
-pase a apuntar al siguiente nodo. Si no había ningún siguiente, significa que la cola quedó vacía, así que también hay
-que poner ultimo en null. Por último, al nodo que sacamos le ponemos su siguiente en null para que quede separado de la cola
-y no siga apuntando a los demás nodos por error. Luego se devuelve ese nodo.
+- Lenguaje natural: Si la cola está vacía, no hay nada para sacar y se devuelve null. Si no, se guarda el elemento que está
+en la posición primero. Luego, si primero y ultimo eran iguales, significa que había un solo elemento en la cola, así que
+después de quitarlo la cola queda vacía y ambos índices pasan a -1. Si había más elementos, primero avanza una posición,
+como la cola es circular, se usa módulo para que, si llega al final del vector, vuelva al principio.
 
 - Precondiciones: Que exista la cola, que elemento a insertar sea del tipo necesario para ser insertado
 - Postcondiciones: Retornara el null si la cola está vacía y el elemento eliminado si no lo está.
@@ -17,12 +16,14 @@ QuitarDeCola()
         Devolver nulo
 
     SiNo
-        aux = primero
-        primero = primero.siguiente
-        aux.siguiente = nulo
+        elemento = vector [primero]
 
-        Si primero == nulo entonces
-                    ultimo = nulo
-                FinSi
+        Si primero == ultimo entonces
+            primero = -1
+            ultimo = -1
+
+        SiNo
+            primero = (primero + 1) mod tamañoVector
+        FinSi
+            Devolver elemento
     FinSi
-       Devolver aux
