@@ -1,0 +1,28 @@
+public boolean controlCorchetes(Lista <char> listaDeEntrada) {
+pila = nueva pila ();
+
+for(int i = 0; i < listaDeEntrada.length(); i++){
+
+    if(listaDeEntrada[i] == '}' && pila.peek() == null){
+        return false;
+    }
+    if(listaDeEntrada[i] == '{'){
+        pila.push(listaDeEntrada[i];
+    }
+    if(listaDeEntrada[i] == '}' && pila.peek() != null){
+        pila.pop();
+    }
+}
+if(pila.peek() == null){
+    return true;
+    }
+else{
+     return false;
+     }
+}
+
+ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n).
+
+PEOR CASO: O(n)
+
+MEJOR CASO: O(1).
