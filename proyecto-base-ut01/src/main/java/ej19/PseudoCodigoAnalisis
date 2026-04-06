@@ -4,12 +4,12 @@ el uso de una pila.
 PRECONDICIONES: - La lista de entrada no es vacía, sino devolverá True de todas
                   formas
                 - La lista de entrada únicamente puede contener corchetes.
-                - La pila debe estar vacía
+                - La pila debe estar vacía al principio
 
 POSTCONDICIONES: -  Si la secuencia arranca con el corchete de apertura, y tiene la
                     misma cantidad de corchetes de apertura que de cierre, retorna True,
                     en cualquier otro caso retorna false.
-                 - No se altera la lists de entrada
+                 - No se altera la lista de entrada.
 
 PSEUDOCODIGO:
 
