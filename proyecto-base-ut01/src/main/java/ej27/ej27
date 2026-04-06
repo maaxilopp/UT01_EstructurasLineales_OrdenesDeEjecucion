@@ -1,0 +1,28 @@
+QuitaDeCola()
+
+- Lenguaje natural: Si la cola está vacía, se devuelve null porque no hay ningún elemento para sacar. Si no está vacía,
+primero se guarda el nodo que está al principio de la cola, porque es el que vamos a quitar. Después hacemos que primero
+pase a apuntar al siguiente nodo. Si no había ningún siguiente, significa que la cola quedó vacía, así que también hay
+que poner ultimo en null. Por último, al nodo que sacamos le ponemos su siguiente en null para que quede separado de la cola
+y no siga apuntando a los demás nodos por error. Luego se devuelve ese nodo.
+
+- Precondiciones: Que exista la cola, que elemento a insertar sea del tipo necesario para ser insertado
+- Postcondiciones: Retornara el null si la cola está vacía y el elemento eliminado si no lo está.
+                   Si la cola tenía un solo elemento, luego de quitarlo tanto primero como ultimo quedan en null.
+                   El nodo devuelto queda aislado (siguiente = null).
+- Pseudocódigo:
+
+QuitarDeCola()
+    Si vacía entonces
+        Devolver nulo
+
+    SiNo
+        aux = primero
+        primero = primero.siguiente
+        aux.siguiente = nulo
+
+        Si primero == nulo entonces
+                    ultimo = nulo
+                FinSi
+    FinSi
+       Devolver aux

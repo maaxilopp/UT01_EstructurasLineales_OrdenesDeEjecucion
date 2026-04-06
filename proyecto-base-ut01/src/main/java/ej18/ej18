@@ -1,0 +1,23 @@
+1. Quitar un elemento de la lista (si existe) y dejarlo disponible para su posterior
+utilización.
+Nodo<T> quitar(T dato)
+
+- Parámetros de entrada: elemento a eliminar (dato)
+- Resultado: Devuelve el elemento retirado o null si no estaba en la lista.
+
+Tendríamos que tener cuidado con el campo siguiente del elemento eliminado porque sigue apuntando al que le seguía. Para evitar confusiones o posible bugs
+hay que hacer un nodoEliminado.setSiguiente(null)
+
+2. Quitar y destruir un elemento (podría llamarse “Eliminar”).
+boolean eliminar(T dato)
+
+- Parámetros de entrada: elemento a eliminar (dato)
+- Resultado: Devuelve true si se eliminó. False si no existía
+
+3. Otros comportamientos posibles (a definir).
+
+Podría ser útil un método para eliminar todos los elementos iguales
+int eliminarTodos(T dato)
+
+-Parámetros de entrada: dato que se quiere eliminar
+-Resultado: devuelve cuantos elementos se eliminaron
