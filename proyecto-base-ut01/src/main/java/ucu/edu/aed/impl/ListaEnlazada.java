@@ -1,7 +1,5 @@
 package ucu.edu.aed.impl;
-
 import ucu.edu.aed.tda.TDALista;
-
 import java.util.Comparator;
 import java.util.function.Predicate;
 
@@ -58,7 +56,33 @@ public class ListaEnlazada<T> implements TDALista<T> {
 
     @Override
     public T remover(int index) {
-        return null;
+        Nodo<T> actual = primero;
+        Nodo<T> anterior = null;
+        int contador = 0;
+
+        if(index < 0){
+            throw new IndexOutOfBoundsException("Error, indice a eliminar invalido");
+        }
+        if(actual == null){
+            throw new IndexOutOfBoundsException("Error, lista vacía ");
+        }
+
+        while (contador < index) {
+            if (actual.getSiguiente() == null) {
+                throw new IndexOutOfBoundsException("Error, indice fuera de rango");
+            }
+            contador += 1;
+            anterior = actual;
+            actual = actual.getSiguiente();
+        }
+
+        if (anterior == null) {
+            primero = actual.getSiguiente(); // caso primer elemento
+        } else {
+            anterior.setSiguiente(actual.getSiguiente());
+        }
+
+        return actual.getDato();
     }
 
     @Override

@@ -1,0 +1,41 @@
+El algoritmo se encarga de validar secuencias de corchetes mediante
+el uso de una pila.
+
+PRECONDICIONES: - La lista de entrada no es vacía, sino devolverá True de todas
+                  formas
+                - La lista de entrada únicamente puede contener corchetes.
+
+POSTCONDICIONES: -  Si la secuencia arranca con el corchete de apertura, y tiene la
+                    misma cantidad de corchetes de apertura que de cierre, retorna True,
+                    en cualquier otro caso retorna false.
+
+PSEUDOCODIGO:
+
+public boolean controlCorchetes(Lista <char> listaDeEntrada) {
+pila = nueva pila ();
+
+for(int i = 0; i < listaDeEntrada.length(); i++){
+
+    if(listaDeEntrada[i] == '}' && pila.peek() == null){
+        return false;
+    }
+    if(listaDeEntrada[i] == '{'){
+        pila.push(listaDeEntrada[i];
+    }
+    if(listaDeEntrada[i] == '}' && pila.peek() != null){
+        pila.pop();
+    }
+}
+if(pila.peek() == null){
+    return true;
+    }
+else{
+     return false;
+     }
+}
+
+ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n).
+
+PEOR CASO: O(n)
+
+MEJOR CASO: O(1).
