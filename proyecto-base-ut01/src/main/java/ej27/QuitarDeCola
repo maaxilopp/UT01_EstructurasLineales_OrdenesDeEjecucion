@@ -7,8 +7,8 @@ como la cola es circular, se usa módulo para que, si llega al final del vector,
 
 - Precondiciones: Que exista la cola, que elemento a insertar sea del tipo necesario para ser insertado
 - Postcondiciones: Retornara el null si la cola está vacía y el elemento eliminado si no lo está.
-                   Si la cola tenía un solo elemento, luego de quitarlo tanto primero como ultimo quedan en null.
-                   El nodo devuelto queda aislado (siguiente = null).
+                   Si la cola tenía un solo elemento, luego de quitarlo tanto primero como ultimo quedan -1
+                   Si había más elementos, primero avanza a la siguiente posición del vector.
 - Pseudocódigo:
 
 QuitarDeCola()
@@ -27,3 +27,14 @@ QuitarDeCola()
         FinSi
             Devolver elemento
     FinSi
+
+
+ORDEN DE EJECUCIÓN DEL ALGORITMO: O(1). Porque el algoritmo siempre realiza la misma cantidad de operaciones,
+sin importar cuántos elementos haya en la cola. Solo tiene que eliminar el último (no hay bucles).
+Hace solamente:
+
+una comparación para ver si está vacía,
+una lectura del vector,
+otra comparación (primero == ultimo),
+una o dos asignaciones,
+y devuelve el elemento.

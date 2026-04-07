@@ -28,3 +28,9 @@ else
     tope + 1
 endif
 }
+
+ORDEN DE EJECUCIÓN: O(1). Siempre hace una cantidad fija de pasos: Verifica si la cola está llena.
+                                                                   Verifica si está vacía.
+                                                                   Actualiza ultimo.
+                                                                   Guarda el elemento en el vector.
+                                                                   Incrementa tope.
