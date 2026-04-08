@@ -1,8 +1,9 @@
 package ej17;
-import ucu.edu.aed.impl.Biblioteca;
-import ucu.edu.aed.impl.Libro;
+import ej17.implementaciones.Biblioteca;
+import ej17.implementaciones.EnumTipoTramite;
+import ej17.implementaciones.Libro;
 import ucu.edu.aed.utils.FileUtils;
-import ucu.edu.aed.impl.EnumTipoTramite;
+
 public class App {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();

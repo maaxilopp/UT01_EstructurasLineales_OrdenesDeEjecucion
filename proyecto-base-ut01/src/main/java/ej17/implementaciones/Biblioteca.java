@@ -1,4 +1,6 @@
-package ucu.edu.aed.impl;
+package ej17.implementaciones;
+
+import ucu.edu.aed.impl.ListaEnlazada;
 
 import java.util.function.Predicate;
 

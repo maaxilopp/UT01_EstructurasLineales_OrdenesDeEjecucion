@@ -1,4 +1,4 @@
-package ucu.edu.aed.impl;
+package ej17.implementaciones;
 public enum EnumTipoTramite {
     PRESTAMO,
     DEVOLUCION

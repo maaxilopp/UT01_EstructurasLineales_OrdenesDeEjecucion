@@ -56,8 +56,8 @@ else{
 }
 
 ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for, en el peor de los casos
-                                  lo recorre por completo
+                                  lo recorre por completo, haciendola de orden lineal O(n).
 
-PEOR CASO: O(n).
+PEOR CASO: O(n), tiene que recorrer toda la lista.
 
-MEJOR CASO: O(1).
+MEJOR CASO: O(1), arranca con un corchete de cierre la lista.
