@@ -1,8 +1,6 @@
-package ej27;
+package ImplTests;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import ucu.edu.aed.impl.ColaCircular;
 
 public class ColaCircularTest extends TestCase {
