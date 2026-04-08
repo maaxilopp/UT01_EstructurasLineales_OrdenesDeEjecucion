@@ -35,19 +35,23 @@ PSEUDOCODIGO:
 public boolean controlCorchetes(Lista <char> listaDeEntrada) {
 pila = nueva pila ();
 
-for(int i = 0; i < listaDeEntrada.length(); i++){
+for(int i = 0; i < listaDeEntrada.size(); i++){
 
-    if(listaDeEntrada[i] == '}' && pila.peek() == null){
+   if(listaDeEntrada.get(i) != '}' && listaDeEntrada.get(i) != '{'){
+        throw new RuntimeException("La pila solo almacena corchetes");
+    }
+
+    if(listaDeEntrada.get(i) == '}' && pila.tope() == null){
         return false;
     }
-    if(listaDeEntrada[i] == '{'){
-        pila.push(listaDeEntrada[i];
+    if(listaDeEntrada.get(i) == '{'){
+        pila.mete(listaDeEntrada.get(i));
     }
-    if(listaDeEntrada[i] == '}' && pila.peek() != null){
-        pila.pop();
+    if(listaDeEntrada.get(i) == '}' && pila.tope() != null){
+        pila.saca();
     }
 }
-if(pila.peek() == null){
+if(pila.tope() == null){
     return true;
     }
 else{
@@ -55,9 +59,12 @@ else{
      }
 }
 
-ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for, en el peor de los casos
-                                  lo recorre por completo, haciendola de orden lineal O(n).
+ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for que realiza unicamente
+                                  operaciones constantes  haciendola de orden lineal O(n).
 
-PEOR CASO: O(n), tiene que recorrer toda la lista.
+PEOR CASO: O(n),  El bucle recorre los n elementos completos de la lista. Cada iteración
+                  realiza operaciones constantes O(1), por lo tanto el total es O(n).
 
-MEJOR CASO: O(1), arranca con un corchete de cierre la lista.
+MEJOR CASO: O(1), El primer elemento ya es un corchete de cierre y la pila está vacía,
+                  por lo que retorna false inmediatamente sin recorrer el resto de la lista,
+                  una sola operación independiente del tamaño de la entrada.
