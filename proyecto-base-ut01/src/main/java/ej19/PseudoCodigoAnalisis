@@ -9,6 +9,8 @@ LENGUAJE NATURAL: El algoritmo recibe una lista de caracteres que contiene
                   apertura ({), lo agrega en la pila. Si el elemento actual es un corchete
                   de cierre (}) y la pila no está vacía, entonces desapila un elemento,
                   eliminando el último corchete de apertura que estaba pendiente de cerrar.
+                  Incluye una excepción en caso de que la lista contenga elementos que
+                  no sean corchetes ni de apertura ni de cierra.
 
                   Cuando ya se recorre toda la lista, Si la pila está vacía, retorna true,
                   lo que indica que todos los corchetes fueron correctamente abiertos y
@@ -20,7 +22,8 @@ LENGUAJE NATURAL: El algoritmo recibe una lista de caracteres que contiene
 PRECONDICIONES: - Aunque no es una precondición ya que el programa funciona igual,
                   se recomienda que la lista no sea vacía, en caso de que sea, devolverá True de todas
                   formas pero no tendría sentido el algoritmo.
-                - La lista de entrada únicamente puede contener corchetes.
+                - Aunque el programa cubre el caso que no es deseado, se recomienda que la 
+                  lista de entrada únicamente contenga corchetes ya sean de entrada o salida.
                 - La pila debe estar vacía al principio
 
 POSTCONDICIONES: - No se modifica la lista de entrada
