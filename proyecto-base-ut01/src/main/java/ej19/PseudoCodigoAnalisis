@@ -1,5 +1,5 @@
-LENGUAJE NATURAL: El algoritmo recibe una lista de caracteres que
-                  contiene corchetes y crea una pila vacía. Recorre
+LENGUAJE NATURAL: El algoritmo recibe una lista de caracteres que contiene
+                  corchetes y crea una pila vacía. Recorre
                   La lista desde el primer elemento hasta el ultimo.
 
                   En cada iteración, Si el elemento actual es un corchete de cierre (})
@@ -55,7 +55,8 @@ else{
      }
 }
 
-ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n).
+ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for, en el peor de los casos
+                                  lo recorre por completo
 
 PEOR CASO: O(n).
 
