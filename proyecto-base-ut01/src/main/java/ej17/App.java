@@ -12,7 +12,7 @@ public class App {
         mostrarCatalogo(biblioteca);
     }
     private static void cargarAdquisiciones(Biblioteca biblioteca) {
-        FileUtils.leerLineas("adquisiciones.txt", linea -> {
+        FileUtils.leerLineas("ej17/adquisiciones.txt", linea -> {
         String[] partes = linea.split(",");
             if (partes.length < 4) return;
             try {
@@ -28,7 +28,7 @@ public class App {
     }
     private static void procesarPrestamos(Biblioteca biblioteca) {
         System.out.println("\nTRAMITES QUE FUERON REALIZADOS EN LA BIBLIOTECA RECIENTEMENTE\n");
-        FileUtils.leerLineas("prestamos.txt", linea -> {
+        FileUtils.leerLineas("ej17/prestamos.txt", linea -> {
             String[] partes = linea.split(",");
             if (partes.length < 3) return;
             try {
