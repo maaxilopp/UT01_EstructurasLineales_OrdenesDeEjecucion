@@ -39,4 +39,30 @@ public class ColaCircularTest extends TestCase {
         assertFalse(colaVacia.poneEnCola(30));
     }
 
+    //agregar 3, 2 quitar y 1 agregar
+    public void testCircularidad(){
+        ColaCircular<Integer> colaCircular = new ColaCircular<Integer>(3);
+        colaCircular.poneEnCola(1);
+        colaCircular.poneEnCola(2);
+        colaCircular.poneEnCola(3);
+        //1-->2-->3
+        colaCircular.imprimirCola();
+        colaCircular.quitaDeCola();
+        //null-->2-->3
+        colaCircular.imprimirCola();
+        colaCircular.quitaDeCola();
+        //null--null-->3
+        colaCircular.imprimirCola();;
+
+
+        colaCircular.poneEnCola(1);
+        //3-->1-->null
+        colaCircular.poneEnCola(2);
+        //3-->1-->2
+        int frentefinal = colaCircular.frente();
+        // deberia ser 3--> 1 --> 2
+        colaCircular.imprimirCola();
+        assertEquals(3,frentefinal);
+    }
+
 }

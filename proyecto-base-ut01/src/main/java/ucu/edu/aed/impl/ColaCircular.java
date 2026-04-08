@@ -67,6 +67,21 @@ public class ColaCircular<T> implements TDACola<T> {
         }
         return flag;
     }
+
+    public void imprimirCola(){
+        int i = primero;
+
+        while (true) {
+            System.out.print(elementos[i]);
+
+            if (i == ultimo) break;
+
+            System.out.print("-->");
+            i = (i + 1) % elementos.length;
+        }
+
+        System.out.println();
+    }
 }
 
 
