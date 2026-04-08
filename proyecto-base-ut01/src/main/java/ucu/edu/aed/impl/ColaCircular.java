@@ -18,7 +18,7 @@ public class ColaCircular<T> implements TDACola<T> {
         this.cantidad = 0;
     }
 
-    private boolean esVacio(){
+    public boolean esVacio(){
         return cantidad == 0;
     }
 
@@ -37,27 +37,36 @@ public class ColaCircular<T> implements TDACola<T> {
         } else {
             primero = (primero + 1) % elementos.length;
         }
+        cantidad --;
         return elemento;
 
     }
 
     @Override
     public T frente() {
-        return elementos[0];
+        return elementos[primero];
         }
 
 
 
     @Override
-    public boolean poneEnCola(T dato){
-        if (cantidad == elementos.length){
-            System.out.println("COLA LLENA");
-            return false;
-        } else if () {
-            
+    public boolean poneEnCola(T dato) {
+        boolean flag = false;
+        if (cantidad == elementos.length) {
+            System.out.println("COLA LLENA. No se puede agregar el elemento :" + dato );
+        } else {
+            if (esVacio()) {
+                primero = 0;
+                ultimo = 0;
+            } else {
+                ultimo = (ultimo + 1) % (elementos.length);
+            }
+            elementos[ultimo] = dato;
+            cantidad++;
+            flag = true;
         }
+        return flag;
     }
-    
 }
 
 

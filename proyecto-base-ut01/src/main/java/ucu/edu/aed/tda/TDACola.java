@@ -14,7 +14,7 @@ package ucu.edu.aed.tda;
  *
  * @param <T> el tipo de los elementos almacenados en la cola
  */
-public interface TDACola<T> extends TDALista<T> {
+public interface TDACola<T> /*extends TDALista<T>*/ {
 
     /**
      * Retorna el elemento ubicado al frente de la cola, sin removerlo.
