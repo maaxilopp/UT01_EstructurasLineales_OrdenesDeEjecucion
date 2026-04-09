@@ -5,7 +5,8 @@ import java.util.function.Predicate;
 
 public class ListaEnlazada<T> implements TDALista<T> {
     protected Nodo<T> primero;
-    public ListaEnlazada (){
+
+    public ListaEnlazada() {
         primero = null;
 
     }
@@ -14,13 +15,12 @@ public class ListaEnlazada<T> implements TDALista<T> {
     @Override
     public void agregar(T elem) {
         Nodo<T> nuevo = new Nodo<>(elem);
-        if (primero == null ){
+        if (primero == null) {
             primero = nuevo;
-          //  nuevo.setSiguiente(null);
-        }
-        else{
+            //  nuevo.setSiguiente(null);
+        } else {
             nuevo.setSiguiente(primero);
-            primero=nuevo;
+            primero = nuevo;
         }
     }
 
@@ -30,10 +30,9 @@ public class ListaEnlazada<T> implements TDALista<T> {
         if (index == 0) {
             nuevo.setSiguiente(primero);
             primero = nuevo;
-        }
-        else{
+        } else {
             Nodo<T> actual = primero;
-            for(int i = 0; i < index - 1; i++){
+            for (int i = 0; i < index - 1; i++) {
                 actual = actual.getSiguiente();
             }
             nuevo.setSiguiente(actual.getSiguiente());
@@ -45,14 +44,14 @@ public class ListaEnlazada<T> implements TDALista<T> {
 
     @Override
     public T obtener(int index) {
-      Nodo<T> actual = primero;
-      int contador = 0;
-      while(index != contador){
-         contador++;
-         actual = actual.getSiguiente();
-         }
-         return actual.getDato();
+        Nodo<T> actual = primero;
+        int contador = 0;
+        while (index != contador) {
+            contador++;
+            actual = actual.getSiguiente();
         }
+        return actual.getDato();
+    }
 
     @Override
     public T remover(int index) {
@@ -60,10 +59,10 @@ public class ListaEnlazada<T> implements TDALista<T> {
         Nodo<T> anterior = null;
         int contador = 0;
 
-        if(index < 0){
+        if (index < 0) {
             throw new IndexOutOfBoundsException("Error, indice a eliminar invalido");
         }
-        if(actual == null){
+        if (actual == null) {
             throw new IndexOutOfBoundsException("Error, lista vacía ");
         }
 
@@ -116,17 +115,50 @@ public class ListaEnlazada<T> implements TDALista<T> {
 
     @Override
     public boolean contiene(T elem) {
+        Nodo<T> actual = primero;
+        while (actual != null) {
+            if (actual.getDato().equals(elem)) {
+                return true;
+            }
+            actual = actual.getSiguiente();
+
+
+        }
         return false;
     }
 
     @Override
     public int indiceDe(T elem) {
-        return 0;
+        Nodo<T> actual = primero;
+        int indice = 0;
+        while (actual != null) {
+            if (actual.getDato().equals(elem)) {
+                return indice; // esta
+            }
+            actual = actual.getSiguiente();
+            indice++;
+        }
+        return -1; // no esta
     }
 
     @Override
     public TDALista<T> ordenar(Comparator<T> comparator) {
-        return null;
+        boolean swap;
+        do {
+            swap = false;
+            Nodo<T> actual = primero;
+            while (actual.getSiguiente() != null) {
+                if (comparator.compare(actual.getDato(), actual.getSiguiente().getDato()) > 0) {
+                    T temporal = actual.getDato();
+                    actual.setDato(actual.getSiguiente().getDato());
+                    actual.getSiguiente().setDato(temporal);
+                    swap = true;
+                }
+                actual = actual.getSiguiente();
+            }
+        } while (swap);
+
+        return this;
     }
 
     @Override
@@ -141,32 +173,27 @@ public class ListaEnlazada<T> implements TDALista<T> {
     }
 
 
-        @Override
+    @Override
     public boolean esVacio() {
+        if (primero == null) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public void vaciar() {
-
+        primero = null;
     }
 
     @Override
     public T buscar(Predicate<T> criterio) {
         Nodo<T> actual = primero;
-        while(actual != null)        {
-            if(criterio.test(actual.getDato()))
+        while (actual != null) {
+            if (criterio.test(actual.getDato()))
                 return actual.getDato();
             actual = actual.getSiguiente();
         }
         return null;
     }
-
-
-
-
-
-
-
-
 }

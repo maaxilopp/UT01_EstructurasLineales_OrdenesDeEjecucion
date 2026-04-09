@@ -1,4 +1,4 @@
-package ej19.implementaciones;
+package ej19;
 import ucu.edu.aed.impl.PilaEnlazada;
 import java.util.List;
 

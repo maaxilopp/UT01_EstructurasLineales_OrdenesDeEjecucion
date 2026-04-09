@@ -1,43 +1,46 @@
 package ej23;
-import java.util.LinkedList;
-
+import ucu.edu.aed.impl.ListaEnlazada;
 
 public class RegistroCiudades {
 
-    private LinkedList<String> sucursales;
+    private ListaEnlazada<String> sucursales;
 
     public RegistroCiudades() {
-        sucursales = new LinkedList<>();
+        sucursales = new ListaEnlazada<>();
     }
 
 
     public void agregarUnaSucursal(String sucursal){
-        sucursales.add(sucursal);
+        sucursales.agregar(sucursal);
     }
 
     public boolean buscarSucursal (String sucursal){
-        return sucursales.contains(sucursal);
+        return sucursales.contiene(sucursal);
     }
 
     public void quitarSucursal(String sucursal){
-        sucursales.remove(sucursal);
+        sucursales.remover(sucursal);
     }
 
-    public LinkedList<String> listarSucursales(){
-        return sucursales;
+    public void listarSucursales(){
+        for (int i = sucursales.tamaño() - 1; i >= 0; i--) {
+            System.out.print(sucursales.obtener(i) + " , ");
+
+
+        }
     }
 
     public int indicarCantSucursales(){
-        return sucursales.size();
+        return sucursales.tamaño();
 
      }
      public boolean estaVacio(){
-        return sucursales.isEmpty();
+        return sucursales.esVacio();
      }
 
      public void imprimir(String separador){
-         for (String sucursale : sucursales) {
-             System.out.print(sucursale + separador);
+         for (int i = 0; i < sucursales.tamaño(); i++) {
+             System.out.print(sucursales.obtener(i) + separador);
 
 
          }

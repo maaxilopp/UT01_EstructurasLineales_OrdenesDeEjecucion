@@ -41,7 +41,7 @@ pila = nueva pila ();
 for(int i = 0; i < listaDeEntrada.size(); i++){
 
    if(listaDeEntrada.get(i) != '}' && listaDeEntrada.get(i) != '{'){
-        throw new RuntimeException("La pila solo almacena corchetes");
+        throw new Exception("La pila solo almacena corchetes");
     }
 
     if(listaDeEntrada.get(i) == '}' && pila.tope() == null){
