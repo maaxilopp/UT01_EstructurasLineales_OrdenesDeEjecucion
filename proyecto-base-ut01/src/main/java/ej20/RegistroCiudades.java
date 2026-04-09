@@ -23,7 +23,7 @@ public class RegistroCiudades {
         sucursales.remove(sucursal);
     }
 
-    public LinkedList<String> listarSucursales(LinkedList<String> sucursales){
+    public LinkedList<String> listarSucursales(){
         return sucursales;
     }
 
