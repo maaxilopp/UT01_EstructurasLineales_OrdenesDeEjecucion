@@ -1,5 +1,4 @@
 package ej19;
-import ej19.implementaciones.BalanceDeCorchetes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
