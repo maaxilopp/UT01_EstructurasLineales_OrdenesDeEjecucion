@@ -14,8 +14,11 @@ public class App {
         System.out.println( ejemplo + " es balanceada: " + x.controlCorchetes(ejemplo));
         System.out.println( mal + " es balanceada: " + x.controlCorchetes(mal));
         System.out.println( hiperMal + " es balanceada: " + x.controlCorchetes(hiperMal));
-        System.out.println( excepcionable + " es balanceada: " + x.controlCorchetes(excepcionable));
-
+        try {
+            System.out.println(excepcionable + " es balanceada: " + x.controlCorchetes(excepcionable));
+        } catch (RuntimeException e) {
+            System.out.println(excepcionable + " " +  e.getMessage());
+        }
 
 
     }

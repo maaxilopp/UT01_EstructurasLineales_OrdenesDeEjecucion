@@ -39,27 +39,25 @@ public boolean controlCorchetes(Lista <char> listaDeEntrada) {
 pila = nueva pila ();
 
 for(int i = 0; i < listaDeEntrada.size(); i++){
+   c = caracter de lista de entrada;
 
-   if(listaDeEntrada.get(i) != '}' && listaDeEntrada.get(i) != '{'){
+   if(c != '}' && c != '{'){
         throw new Exception("La pila solo almacena corchetes");
     }
 
-    if(listaDeEntrada.get(i) == '}' && pila.tope() == null){
+    if(c == '}'){
+      if(pila.tope() == null){
         return false;
-    }
-    if(listaDeEntrada.get(i) == '{'){
-        pila.mete(listaDeEntrada.get(i));
-    }
-    if(listaDeEntrada.get(i) == '}' && pila.tope() != null){
+        }
+      else{
         pila.saca();
+        }
+      }
+    if(c == '{'){
+        pila.mete(c);
     }
 }
-if(pila.tope() == null){
-    return true;
-    }
-else{
-     return false;
-     }
+return(pila.tope() == null);
 }
 
 ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for que realiza unicamente
@@ -67,6 +65,7 @@ ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for que realiza u
 
 PEOR CASO: O(n),  El bucle recorre los n elementos completos de la lista. Cada iteración
                   realiza operaciones constantes O(1), por lo tanto el total es O(n).
+                  Por ejemplo, en el caso de '{{{'', la pila almacena 3, osea n elementos.
 
 MEJOR CASO: O(1), El primer elemento ya es un corchete de cierre y la pila está vacía,
                   por lo que retorna false inmediatamente sin recorrer el resto de la lista,
