@@ -1,4 +1,4 @@
-package ej20;
+package ej23;
 import ucu.edu.aed.utils.FileUtils;
 
 
@@ -12,20 +12,20 @@ public class App {
     }
     private static void pruebaUno(){
         RegistroCiudades registro = new RegistroCiudades();
-        FileUtils.leerLineas("ej20/suc1.txt", registro::agregarUnaSucursal);
+        FileUtils.leerLineas("ej23/suc1.txt", registro::agregarUnaSucursal);
         System.out.println("Resultados de prueba uno: " + registro.indicarCantSucursales() + "\n");
 
     }
 
     private static void pruebaDos(){
         RegistroCiudades registro = new RegistroCiudades();
-        FileUtils.leerLineas("ej20/suc1.txt", registro::agregarUnaSucursal);
+        FileUtils.leerLineas("ej23/suc1.txt", registro::agregarUnaSucursal);
         registro.quitarSucursal("Chicago");
         System.out.println("Resultado de prueba dos:  Shenzhen, aca esta el listado: " + registro.listarSucursales()+ "\n");
     }
      private static void pruebaTres (){
          RegistroCiudades registro = new RegistroCiudades();
-         FileUtils.leerLineas("ej20/suc2.txt", registro::quitarSucursal);
+         FileUtils.leerLineas("ej23/suc2.txt", registro::quitarSucursal);
          registro.quitarSucursal("Shenzhen");
          registro.quitarSucursal("Tokio");
          System.out.println("Resultado de la prueba 3: Queda vacía y no da error de ejecución (respuesta d: ninguna de las anteriores)");
@@ -35,7 +35,7 @@ public class App {
 
     private static void pruebaCuatro (){
         RegistroCiudades registro = new RegistroCiudades();
-        FileUtils.leerLineas("ej20/suc3.txt", linea -> registro.agregarUnaSucursal(linea));
+        FileUtils.leerLineas("ej23/suc3.txt", linea -> registro.agregarUnaSucursal(linea));
         System.out.print("Resultado de la prueba 4: ");
         registro.imprimir(";");
 
