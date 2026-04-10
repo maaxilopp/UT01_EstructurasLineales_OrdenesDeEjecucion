@@ -1,14 +1,12 @@
 package ej26;
-
-import ej19.BalanceDeCorchetes;
-
+import ej26.ControlCorchetes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class App {
     public static void main(String[] args){
-        BalanceDeCorchetes x = new BalanceDeCorchetes();
+        ControlCorchetes x = new ControlCorchetes();
         List<Character> ejemplo = new ArrayList<>(Arrays.asList('{', '}', '{', '{', '}', '}')); // true si todo sale bien
         List <Character> mal = new ArrayList<>(Arrays.asList( '{','{','{','{','{','}')); // false si todo sale bien
         List <Character> hiperMal = new ArrayList<>(Arrays.asList( '}', '{')); // false si todo sale bien

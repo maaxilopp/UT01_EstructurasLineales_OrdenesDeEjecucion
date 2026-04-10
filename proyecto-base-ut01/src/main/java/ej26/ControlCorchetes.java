@@ -11,7 +11,7 @@ public class ControlCorchetes {
             char elemento = entrada.get(i);
 
             if((elemento != '}') && (elemento != '{')){
-                throw new RuntimeException("La estructura solo soporta { o }");
+                throw new RuntimeException("La estructura solo soporta corchetes");
             }
             if(elemento == '}') {
                 if (pilaCorchetes.isEmpty()) {
