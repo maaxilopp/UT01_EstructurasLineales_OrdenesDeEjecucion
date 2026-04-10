@@ -7,28 +7,26 @@ import java.util.NoSuchElementException;
 public class PilaEnlazada <T> extends ListaEnlazada <T> implements TDAPila  <T>{
     @Override
     public T tope() {
-        Nodo <T> actual = primero;
-        if(actual == null){
+        if(primero == null){
             return null;
         }
-        return actual.getDato();
+        return primero.getDato();
     }
 
     @Override
     public T saca() {
-        Nodo <T> actual = primero;
-        if(actual == null) {
-            throw new NoSuchElementException("La pila está vacia, no se le pueden sacar elementos");
+        if (primero == null) {
+            throw new NoSuchElementException("La pila está vacía");
         }
-        primero = actual.getSiguiente();
-        return actual.getDato();
+        T temporal = primero.getDato();
+        primero = primero.getSiguiente();
+        return temporal;
     }
 
     @Override
     public void mete(T dato) {
-        Nodo <T> actual = primero;
         Nodo <T> nuevo = new Nodo<>(dato);
-        nuevo.setSiguiente(actual);
+        nuevo.setSiguiente(primero);
         primero = nuevo;
     }
 }

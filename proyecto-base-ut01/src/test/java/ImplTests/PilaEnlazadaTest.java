@@ -34,9 +34,8 @@ public class PilaEnlazadaTest extends TestCase {
         PilaEnlazada<Integer> pila = new PilaEnlazada<>();
         try {
             pila.saca();
-            fail("Debería lanzar excepción en pila vacía"); // asegura que salga la excepcion
+            fail("Debería lanzar excepcion");
         } catch (NoSuchElementException e) {
-            // se espera la excepción
         }
     }
 
