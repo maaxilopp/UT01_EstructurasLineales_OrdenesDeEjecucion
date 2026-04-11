@@ -41,7 +41,7 @@ public class Biblioteca {
         if (existente == null) {
             System.out.println("El libro no existe en el catalogo");
         } else {
-            catalogo.remover(libro);
+            catalogo.remover(existente);
         }
     }
 
@@ -62,9 +62,14 @@ public class Biblioteca {
     public boolean prestarLibro(String codigo, int cantidad) {
         Libro existente = buscarLibro(codigo);
         if (existente == null) return false;
-        if (existente.getStock() < cantidad) return false;
-        existente.prestarEjemplares(cantidad);
-        return true;
+        if (cantidad <= 0) return false;
+
+        int disponibles = existente.getStock();
+        if (disponibles <= 0) return false;
+
+        int aPrestar = Math.min(cantidad, disponibles);
+        existente.prestarEjemplares(aPrestar);
+        return true; //true si se presto al menos 1
     }
 
     public boolean devolverLibro(String codigo, int cantidad) {
