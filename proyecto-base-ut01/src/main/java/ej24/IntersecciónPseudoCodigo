@@ -1,0 +1,63 @@
+LENGUAJE NATURAL: El algoritmo recibe por parámetro dos conjuntos representados como listas enlazadas ordenadas.
+                  Se recorren ambas listas simultáneamente, comparando sus elementos nodo a nodo.
+
+                  Para cada comparación:
+                  - Si el elemento de la lista a == al de la lista b; se agrega el elemento una sola vez al conjunto resultante
+                  - Si el elemento de la lista a < al de la lista b; el puntero de a avanza al siguiente elemento de a.
+                  - Si el elemento de la lista a > al de la lista b; el puntero de b avanza al siguiente elemento de b.
+
+                   Si una lista se agota no puede haber más elementos en común, por lo que el programa se termina ahi a diferencia de
+                   unión.
+
+                   Finalmente, se retorna un tercer conjunto con los elementos en comun de los conjuntos A y B.
+
+
+PRECONDICIONES: -Aunque no contengan elementos dentro, ambos conjuntos de entrada existen y no son null.
+                -El conjunto de entrada debe estar previamente ordenado e implementado de la misma forma que el conjunto con el cual se va a generar una interseccion.
+                -Los conjuntos de entrada no pueden tener elementos repetidos.
+                -Ambos conjuntos se encuentran ordenados bajo el mismo criterio.
+
+POSTCONDICIONES: - El conjunto de salida está ordenado y no contiene elementos repetidos.
+                 - Todos los elementos del conjunto de salida pertenecen a ambos de los conjuntos de entrada
+                 - En caso que ningun elemento coincida entre los conjuntos, retornará un conjunto vacío
+                 - Ninguno de los conjuntos de entrada son modificados
+
+PSEUDOCÓDIGO:
+
+public void interseccionDeDosConjuntos(lista a, lista b){
+lista c = nueva lista enlazada();
+int i = 0;
+int j = 0;
+while(i < tamaño_a && i < tamaño_b){
+    if(a.obtener(i) == b.obtener(j)){
+        c.meter(a.obtener(i));
+        i ++;
+        j ++;
+        }
+    else if(a.obtener(i) < b.obtener(j)){
+        i++
+    }
+    else{
+        j++
+        }
+    }
+    return c;
+    }
+
+ESPECIFICACIÓN CASOS DE PRUEBA:
+                                  A = {1,2,3} ; B = {2,4,9,112} ; C = {2}
+                                  A = {} ; B = {9} ; C = {}
+                                  A = {} ; B = {} ; C = {}
+                                  A = {1,2} ; B={1,2} ; C = {1, 2}
+                                  A ={1,2,3,4,5,6} B = {6} C = {6}
+
+ORDEN DE EJECUCIÓN: Al igual que unión, es de orden lineal, O(n), ya que hay un bucle que
+                    en el peor caso, se ejecuta la cantidad de elementos de el conjunto a
+                    más la cantidad de elementos del conjunto B; asi que aunque tecnicamente
+                    el crecimiento es O(n + s), siendo n la cantidad de elementos de a y s la cantidad
+                    de elementos de b, se puede resumir como O(n).
+
+PEOR CASO: O(n), las listas A y B no son vacias y no hay elementos en común
+
+MEJOR CASO: O(1), almenos una lista es vacía.
+
