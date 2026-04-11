@@ -18,14 +18,14 @@ proc PoneEnCola(unElemento){
 if tope = largoArreglo
     mostrar "cola llena"
 else
-    primero <-- 0 //posicion 0 del arreglo
     if cola.esVacia = true
+        primero <-- 0
         ultimo <-- 0
     else
-        ultimo <-- ultimo +1 mod largo(arreglo)
+        ultimo <-- (ultimo +1) mod largo(arreglo)
     endif
     arreglo[ultimo] <-- unElemento //insertamos el elemento en el indice del ultimo
-    tope + 1
+    tope <-- tope + 1
 endif
 }
 

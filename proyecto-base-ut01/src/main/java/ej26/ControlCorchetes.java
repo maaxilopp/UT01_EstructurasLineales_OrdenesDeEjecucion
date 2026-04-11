@@ -7,21 +7,18 @@ public class ControlCorchetes {
     public boolean controlCorchetes(List<Character> entrada){
         Stack<Character> pilaCorchetes = new Stack<>();
 
-        for(int i = 0; i < entrada.size();i++){
-            char elemento = entrada.get(i);
-
-            if((elemento != '}') && (elemento != '{')){
-                throw new RuntimeException("La estructura solo soporta corchetes");
+        for (char elemento : entrada) {
+            if ((elemento != '}') && (elemento != '{')) {
+                continue; //ignorar
             }
-            if(elemento == '}') {
+            if (elemento == '}') {
                 if (pilaCorchetes.isEmpty()) {
                     return false;
-                }
-                else{
+                } else {
                     pilaCorchetes.pop();
                 }
             }
-            if(elemento== '{'){
+            if (elemento == '{') {
                 pilaCorchetes.push(elemento);
             }
         }

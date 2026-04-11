@@ -3,6 +3,9 @@ import ej17.implementaciones.Biblioteca;
 import ej17.implementaciones.EnumTipoTramite;
 import ej17.implementaciones.Libro;
 import ucu.edu.aed.utils.FileUtils;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -41,16 +44,29 @@ public class App {
                     return;
                 }
                 EnumTipoTramite tipoTramite = EnumTipoTramite.valueOf(tipo.toUpperCase());
-                if (tipoTramite == EnumTipoTramite.PRESTAMO) {
-                    if (biblioteca.prestarLibro(codigo, cantidad)) {
-                        System.out.println("PRESTAMO: " + existente.getTitulo() + " | Stock restante: " + existente.getStock());
-                    } else {
-                        System.out.println("SIN STOCK: " + existente.getTitulo());
-                    }
-                } else if (tipoTramite == EnumTipoTramite.DEVOLUCION) {
-                    biblioteca.devolverLibro(codigo, cantidad);
-                    System.out.println("DEVOLUCION: " + existente.getTitulo() + " | Stock actualizado: " + existente.getStock());
+
+            if (tipoTramite == EnumTipoTramite.PRESTAMO) {
+
+                int stockAntes = existente.getStock();
+                boolean ok = biblioteca.prestarLibro(codigo, cantidad); // con la lógica "hasta donde alcance"
+                int stockDespues = existente.getStock();
+
+                if (ok) {
+                    int prestado = stockAntes - stockDespues;
+                    System.out.println("PRESTAMO: " + existente.getTitulo()
+                            + " | Solicitado: " + cantidad
+                            + " | Prestado: " + prestado
+                            + " | Stock restante: " + stockDespues);
+                } else {
+                    // ok == false => no prestó nada (libro no existe o stock 0 o cantidad <= 0)
+                    System.out.println("SIN STOCK: " + existente.getTitulo());
                 }
+
+            } else if (tipoTramite == EnumTipoTramite.DEVOLUCION) {
+                biblioteca.devolverLibro(codigo, cantidad);
+                System.out.println("DEVOLUCION: " + existente.getTitulo()
+                        + " | Stock actualizado: " + existente.getStock());
+            }
             } catch(NumberFormatException e){
                 System.out.println("En esta linea de prestamos hay un error de formato en el texto ingresado:(");
             }catch(IllegalArgumentException e){
@@ -60,8 +76,15 @@ public class App {
     }
     private static void mostrarCatalogo(Biblioteca biblioteca) {
         System.out.println("\nCATÁLOGO ACTUALIZADO DE LIBROS EN LA BIBLIOTECA\n");
+
+        List<Libro> libros = new ArrayList<>();
         for (int i = 0; i < biblioteca.getCatalogo().tamaño(); i++) {
-            Libro libro = biblioteca.getCatalogo().obtener(i);
+            libros.add(biblioteca.getCatalogo().obtener(i));
+        }
+
+        libros.sort(Comparator.comparing(Libro::getTitulo, String.CASE_INSENSITIVE_ORDER));
+
+        for (Libro libro : libros) {
             System.out.println("Titulo: " + libro.getTitulo()
                     + " | Codigo: " + libro.getCodigo()
                     + " | Precio: " + libro.getPrecio()
