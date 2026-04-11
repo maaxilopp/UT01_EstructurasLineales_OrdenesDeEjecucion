@@ -32,6 +32,8 @@ POSTCONDICIONES: - No se modifica la lista de entrada
                  - Retornará false si la lista de entrada empieza con un corchete
                    de cierre o si la secuencia no está bien balanceada, por ende
                    la pila no está vacía
+                 - Retornará una excepción si la secuencia contiene otros elementos
+                   que no son corchetes.
 
 PSEUDOCODIGO:
 
@@ -60,6 +62,11 @@ for(int i = 0; i < listaDeEntrada.size(); i++){
 return(pila.tope() == null);
 }
 
+ESPECIFICACIÓN CASOS DE PRUEBA: ('{', '}', '{', '{', '}', '}') retorna true
+                                ( '{','{','{','{','{','}') retorna false
+                                ( '}', '{') retorna false
+                                ( 'a', '{') retorna mensaje
+
 ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for que realiza unicamente
                                   operaciones constantes  haciendola de orden lineal O(n).
 
@@ -69,4 +76,4 @@ PEOR CASO: O(n),  El bucle recorre los n elementos completos de la lista. Cada i
 
 MEJOR CASO: O(1), El primer elemento ya es un corchete de cierre y la pila está vacía,
                   por lo que retorna false inmediatamente sin recorrer el resto de la lista,
-                  una sola operación independiente del tamaño de la entrada.
+                  ocurre una sola operación independiente del tamaño de la entrada.

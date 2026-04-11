@@ -1,0 +1,82 @@
+LENGUAJE NATURAL:   El algoritmo recibe por parámetro dos conjuntos representados como listas enlazadas ordenadas.
+                    Se recorren ambas listas simultáneamente, comparando sus elementos nodo a nodo.
+
+                    Para cada comparación:
+                    Si ambos elementos son iguales, se agrega el dato una sola vez al conjunto resultado y se avanza en ambas listas.
+                    Si el elemento de la lista A es menor que el de la lista B, se agrega el elemento de A y se avanza en A.
+                    Si el elemento de la lista B es menor que el de la lista A, se agrega el elemento de B y se avanza en B.
+
+                    Una vez que se llega al final de una de las listas, se agregan al conjunto resultado todos los elementos restantes de la otra lista.
+
+                    Finalmente, se retorna el conjunto resultado.
+
+PRECONDICIONES:
+                    -Aunque no contengan elementos dentro, ambos conjuntos de entrada existen y no son null.
+                    -El conjunto de entrada debe estar previamente ordenado e implementado de la misma forma que el conjunto con el cual se va a generar una union.
+                    -Los conjuntos de entrada no pueden tener elementos repetidos.
+                    -Ambos conjuntos se encuentran ordenados bajo el mismo criterio.
+
+POSTCONDICIONES:
+                    -El conjunto retornado está ordenado y no contiene elementos repetidos
+                    -Todos los elementos del conjunto de salida deben estar en al menos uno de los conjuntos de entrada
+                    -Los dos conjuntos de entrada permanecen iguales luego de la ejecución del programa
+
+PSEUDOCODIGO:
+
+proc union(lista a, lista b){
+  R <-- lista vacia
+
+  i =0
+  j= 0
+
+  mientras i < tamaño(A) y j < tamaño(B)
+    si (a.obtener(i) == b .obtener(j))
+        R.agregar(a.obtener(i))
+        i ++
+        j ++
+    sino si (a.obtener(i) < b.obtener(j))
+        R.agregar(a.obtener(i))
+        i++
+    sino
+        R.agregar(b.obtener(j))
+        j++
+    finsi
+    finmientras
+
+    mientras i < tamaño(A)
+        R.agregar(a.obtener(i))
+        i ++
+    finmientras
+
+    mientras j < tamaño(B)
+        R.agregar(b.obtener(j))
+        j ++
+    finmientras
+
+    return R
+
+}
+ESPECIFICACIÓN CASOS DE PRUEBA:
+                                  A = {1,2,3} ; B = {2,4,9,112} ; C = {1, 2, 3, 4, 9, 112}.}
+                                  A = {} ; B = {9} ; C = {9}
+                                  A = {} ; B = {} ; C = {}
+                                  A = {1,2} ; B={1,2} ; C = {1, 2}
+
+ORDEN DE EJECUCIÓN DEL ALGORITMO: El algoritmo es de Orden lineal O(n),tiene un bucle "while",
+                                  en el que se ejecuta la longitud de la lista más corta veces,
+                                  luego, para incluir los elementos de la lista más larga que no
+                                  alcanzó el primer bucle, tiene otros bucles pero no anidadados,
+                                  por lo que les aplica  la regla de la suma no de la
+                                  multiplicación, manteniendola de Orden O(n), siendo N la longitud
+                                  de la lista más larga de A y B, o en caso que sean de igual longitud,
+                                  la longitud de las listas A y B.
+
+                                  Me parece importante mencionar que se ejecuta
+                                  cantidad de elementos de a + cantidad de elementos de b veces, osea O(n + s),
+                                  siendo N la cantidad de elementos de A y S la cantidad de elementos de B, no afecta
+                                  el orden lineal del algoritmo y se expresa como O(n) igualmente pero no es el comportamiento más
+                                  tipico y podria resultar engañoso.
+
+                                  MEJOR CASO: Si almenos una de las listas es vacía, el primer while no se ejecuta y queda de O(1).
+
+                                  PEOR CASO: Las dos listas contienen elementos, O(n).
