@@ -44,6 +44,7 @@ public class ColaCircular<T> implements TDACola<T> {
 
     @Override
     public T frente() {
+        if (esVacio()) return null;
         return elementos[primero];
         }
 
