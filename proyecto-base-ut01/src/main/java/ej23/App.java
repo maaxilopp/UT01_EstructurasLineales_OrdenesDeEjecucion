@@ -28,7 +28,7 @@ public class App {
     }
      private static void pruebaTres (){
          RegistroCiudades registro = new RegistroCiudades();
-         FileUtils.leerLineas("ej23/suc2.txt", registro::quitarSucursal);
+         FileUtils.leerLineas("ej23/suc2.txt", registro::agregarUnaSucursal);
          registro.quitarSucursal("Shenzhen");
          registro.quitarSucursal("Tokio");
          System.out.println("Resultado de la prueba 3: Queda vacía y no da error de ejecución (respuesta d: ninguna de las anteriores)");

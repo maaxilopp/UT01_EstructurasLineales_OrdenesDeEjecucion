@@ -16,15 +16,15 @@ QuitarDeCola()
         Devolver nulo
 
     SiNo
-        elemento = vector [primero]
+        elemento <-- arreglo[primero]
 
         Si primero == ultimo entonces
-            primero = -1
-            ultimo = -1
-
+            primero <-- -1
+            ultimo <-- -1
         SiNo
-            primero = (primero + 1) mod tamañoVector
+            primero <-- (primero + 1) mod largo(arreglo)
         FinSi
+            tope <-- tope - 1
             Devolver elemento
     FinSi
 
