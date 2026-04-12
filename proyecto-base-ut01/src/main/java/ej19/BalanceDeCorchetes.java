@@ -12,7 +12,7 @@ public class BalanceDeCorchetes {
             if (elemento != '}' && elemento != '{') {
                 throw new RuntimeException("La pila solo almacena corchetes");
             }
-            if (elemento == '}') {
+            else if (elemento == '}') {
                 if (pila.tope() == null) {
                     return false;
                 } else {
@@ -20,7 +20,7 @@ public class BalanceDeCorchetes {
                 }
             }
 
-            if (elemento == '{') {
+            else if (elemento == '{') {
                 pila.mete(elemento);
             }
 
