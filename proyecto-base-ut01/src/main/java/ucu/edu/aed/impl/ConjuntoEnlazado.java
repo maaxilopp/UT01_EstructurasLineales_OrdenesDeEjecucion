@@ -4,6 +4,26 @@ import ucu.edu.aed.tda.TDAConjunto;
 public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T> implements TDAConjunto<T> {
 
     @Override
+    public void agregar(T elem) {
+        Nodo<T> nuevo = new Nodo<>(elem);
+        if (primero == null || elem.compareTo(primero.getDato()) < 0) {
+            nuevo.setSiguiente(primero);
+            primero = nuevo;
+            return;
+        }
+        if (elem.compareTo(primero.getDato()) == 0) return;
+        Nodo<T> actual = primero;
+        while (actual.getSiguiente() != null) {
+            int cmp = elem.compareTo(actual.getSiguiente().getDato());
+            if (cmp == 0) return;
+            if (cmp < 0) break;
+            actual = actual.getSiguiente();
+        }
+        nuevo.setSiguiente(actual.getSiguiente());
+        actual.setSiguiente(nuevo);
+    }
+
+    @Override
     public TDAConjunto<T> union(TDAConjunto<T> otro) {
         ConjuntoEnlazado<T> conjunto = new ConjuntoEnlazado<>();
         Nodo<T> nodoA = this.primero;
@@ -84,20 +104,18 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
     public boolean esSubconjuntoDe(TDAConjunto<T> otro) {
         Nodo<T> nodoA = this.primero;
         Nodo<T> nodoB = ((ConjuntoEnlazado<T>) otro).primero;
-        int contador = 0;
         while (nodoA != null && nodoB != null) {
             int comparacion = nodoA.getDato().compareTo(nodoB.getDato());
             if (comparacion == 0) {
-                contador++;
                 nodoA = nodoA.getSiguiente();
                 nodoB = nodoB.getSiguiente();
-            } else if (comparacion < 0) { // si el elemento de a es menor que el de b y ya pasó la comparación de si es igual a b,como esta ordenado, ya no es subconjunto de b.
+            } else if (comparacion < 0) {
                 return false;
-            } else if (comparacion > 0) {
+            } else {
                 nodoB = nodoB.getSiguiente();
             }
         }
-        return (contador == this.tamaño()); // si todos los elementos de A, estan en B, el contador de la cantidad de elementos iguales vale lo mismo que el tamaño de A.
+        return nodoA == null;
     }
 
     protected Nodo<T> ultimo;
@@ -106,9 +124,10 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
         Nodo<T> nuevo = new Nodo<>(dato);
         if (this.primero == null) {
             this.primero = nuevo;
+            this.ultimo = nuevo;
         } else {
             this.ultimo.setSiguiente(nuevo);
+            this.ultimo = nuevo;
         }
-        this.ultimo = nuevo;
     }
 }
