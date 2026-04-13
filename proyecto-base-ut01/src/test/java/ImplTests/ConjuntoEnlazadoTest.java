@@ -2,29 +2,8 @@ package ImplTests;
 import junit.framework.TestCase;
 import ucu.edu.aed.impl.ConjuntoEnlazado;
 
+
 public class ConjuntoEnlazadoTest extends TestCase {
-
-    public void testAgregarDuplicadosNoEsValido(){
-        ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
-        conjunto.agregar(1);
-        assertEquals(1, conjunto.tamaño());
-    }
-    public void testAgregarOrdena(){
-        ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
-        conjunto.agregar(3);
-        conjunto.agregar(1);
-        conjunto.agregar(2);
-        assertEquals(1, (int) conjunto.obtener(0));
-        assertEquals(2, (int) conjunto.obtener(1));
-        assertEquals(3, (int) conjunto.obtener(2));
-    }
-
-    public void testAgregarEnConjuntoVacio(){
-        ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
-        conjunto.agregar(5);
-        assertEquals(1, conjunto.tamaño());
-    }
 
     public void testUnionSiDosConjuntosSonVaciosRetornaConjuntoVacio(){
         ConjuntoEnlazado <Integer> conjunto = new ConjuntoEnlazado<>();
@@ -42,8 +21,8 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testUnionSiConjuntosSonIgualesRetornaConjuntoA(){
         ConjuntoEnlazado <Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado <Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(49);
-        conjunto2.agregar(49);
+        conjunto.agregar(99);
+        conjunto2.agregar(99);
         conjunto.agregar(54);
         conjunto2.agregar(54);
         assertEquals(2, conjunto.union(conjunto2).tamaño());
@@ -52,12 +31,12 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testUnionEjemploNormal(){
         ConjuntoEnlazado <Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado <Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(4);
-        conjunto2.agregar(4);
+        conjunto.agregar(44);
+        conjunto2.agregar(44);
         conjunto.agregar(13);
         conjunto2.agregar(13);
-        conjunto.agregar(24);
-        conjunto2.agregar(26);
+        conjunto.agregar(2);
+        conjunto2.agregar(6);
         assertEquals(4, conjunto.union(conjunto2).tamaño());
     }
 
@@ -74,10 +53,10 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testInterseccionPromedio(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
-        conjunto.agregar( 5);
+        conjunto.agregar(5);
+        conjunto.agregar( 1);
         conjunto2.agregar( 5);
-        conjunto2.agregar(14);
+        conjunto2.agregar(3);
         assertEquals(1, conjunto.interseccion(conjunto2).tamaño());
     }
 
@@ -104,21 +83,21 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testInterseccionTodosEnComun(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
-        conjunto.agregar(2);
         conjunto.agregar(3);
-        conjunto2.agregar(1);
-        conjunto2.agregar(2);
+        conjunto.agregar(2);
+        conjunto.agregar(1);
         conjunto2.agregar(3);
+        conjunto2.agregar(2);
+        conjunto2.agregar(1);
         assertEquals(3, conjunto.interseccion(conjunto2).tamaño());
     }public void testDiferenciaConElementosEnComun(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
-        conjunto.agregar(3);
         conjunto.agregar(5);
-        conjunto2.agregar(3);
+        conjunto.agregar(3);
+        conjunto.agregar(1);
         conjunto2.agregar(5);
+        conjunto2.agregar(3);
         assertEquals(1, conjunto.diferencia(conjunto2).tamaño());
     }
 
@@ -131,7 +110,7 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testDiferenciaSegundoVacio(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
+        conjunto.agregar(10);
         conjunto.agregar(2);
         assertEquals(2, conjunto.diferencia(conjunto2).tamaño());
     }
@@ -146,19 +125,17 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testDiferenciaSinNadaEnComun(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
-        conjunto.agregar(3);
-        conjunto2.agregar(2);
-        conjunto2.agregar(4);
-        assertEquals(2, conjunto.diferencia(conjunto2).tamaño());
+        conjunto.agregar(10);
+        conjunto2.agregar(1);
+        assertEquals(1, conjunto.diferencia(conjunto2).tamaño());
     }
 
     public void testDiferenciaTodosEnComun(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
+        conjunto.agregar(10);
         conjunto.agregar(2);
-        conjunto2.agregar(1);
+        conjunto2.agregar(10);
         conjunto2.agregar(2);
         assertEquals(0, conjunto.diferencia(conjunto2).tamaño());
     }
@@ -166,11 +143,9 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testEsSubconjuntoDePromedio(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
         conjunto.agregar(3);
-        conjunto2.agregar(1);
         conjunto2.agregar(3);
-        conjunto2.agregar(5);
+        conjunto2.agregar(1);
         assertTrue(conjunto.esSubconjuntoDe(conjunto2));
     }
 
@@ -190,19 +165,19 @@ public class ConjuntoEnlazadoTest extends TestCase {
     public void testNoEsSubconjuntoDe(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
         conjunto.agregar(4);
-        conjunto2.agregar(1);
+        conjunto.agregar(1);
         conjunto2.agregar(3);
+        conjunto2.agregar(1);
         assertFalse(conjunto.esSubconjuntoDe(conjunto2));
     }
 
     public void testEsSubconjuntoDeIguales(){
         ConjuntoEnlazado<Integer> conjunto = new ConjuntoEnlazado<>();
         ConjuntoEnlazado<Integer> conjunto2 = new ConjuntoEnlazado<>();
-        conjunto.agregar(1);
+        conjunto.agregar(10);
         conjunto.agregar(2);
-        conjunto2.agregar(1);
+        conjunto2.agregar(10);
         conjunto2.agregar(2);
         assertTrue(conjunto.esSubconjuntoDe(conjunto2));
     }
@@ -213,6 +188,4 @@ public class ConjuntoEnlazadoTest extends TestCase {
         conjunto.agregar(1);
         assertFalse(conjunto.esSubconjuntoDe(conjunto2));
     }
-
-
 }

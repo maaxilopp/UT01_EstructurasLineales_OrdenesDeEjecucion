@@ -12,23 +12,24 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
         while (nodoA != null && nodoB != null) {
             int comparacion = nodoA.getDato().compareTo(nodoB.getDato());
             if (comparacion == 0) {
-                conjunto.agregar(nodoA.getDato());
+                conjunto.agregarAlFinal(nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
                 nodoB = nodoB.getSiguiente();
+
             } else if (comparacion < 0) {
-                conjunto.agregar(nodoA.getDato());
+                conjunto.agregarAlFinal( nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
             } else {
-                conjunto.agregar(nodoB.getDato());
+                conjunto.agregarAlFinal( nodoB.getDato());
                 nodoB = nodoB.getSiguiente();
             }
         }
         while (nodoA != null) {
-            conjunto.agregar(nodoA.getDato());
+            conjunto.agregarAlFinal(nodoA.getDato());
             nodoA = nodoA.getSiguiente();
         }
         while (nodoB != null) {
-            conjunto.agregar(nodoB.getDato());
+            conjunto.agregarAlFinal( nodoB.getDato());
             nodoB = nodoB.getSiguiente();
         }
         return conjunto;
@@ -37,19 +38,18 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
     @Override
     public TDAConjunto<T> interseccion(TDAConjunto<T> otro) {
         ConjuntoEnlazado<T> conjunto = new ConjuntoEnlazado<>();
-        Nodo <T> nodoA = this.primero;
-        Nodo <T> nodoB = ((ConjuntoEnlazado<T>)otro).primero;
+        Nodo<T> nodoA = this.primero;
+        Nodo<T> nodoB = ((ConjuntoEnlazado<T>) otro).primero;
         while (nodoA != null && nodoB != null) {
             int comparacion = nodoA.getDato().compareTo(nodoB.getDato());
-            if (comparacion==0) {
-                conjunto.agregar(nodoA.getDato());
+            if (comparacion == 0) {
+               conjunto.agregarAlFinal(nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
                 nodoB = nodoB.getSiguiente();
-            } else if ( comparacion < 0) {
+            } else if (comparacion < 0) {
                 nodoA = nodoA.getSiguiente();
-            }
-            else{
-                nodoB= nodoB.getSiguiente(); // no continua xq si ya se recorrio un conjunto entero, no  va a haber mas elementos en comun.
+            } else {
+                nodoB = nodoB.getSiguiente(); // no continua xq si ya se recorrio un conjunto entero, no  va a haber mas elementos en comun.
             }
         }
         return conjunto;
@@ -58,16 +58,15 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
     @Override
     public TDAConjunto<T> diferencia(TDAConjunto<T> otro) {
         ConjuntoEnlazado<T> conjunto = new ConjuntoEnlazado<>();
-        Nodo <T> nodoA = this.primero;
-        Nodo <T> nodoB = ((ConjuntoEnlazado<T>)otro).primero;
+        Nodo<T> nodoA = this.primero;
+        Nodo<T> nodoB = ((ConjuntoEnlazado<T>) otro).primero;
         while (nodoA != null && nodoB != null) {
             int comparacion = nodoA.getDato().compareTo(nodoB.getDato());
-            if ( comparacion == 0) {
+            if (comparacion == 0) {
                 nodoA = nodoA.getSiguiente();
                 nodoB = nodoB.getSiguiente();
-            }
-            else if (comparacion < 0){
-                conjunto.agregar(nodoA.getDato());
+            } else if (comparacion < 0) {
+                conjunto.agregarAlFinal( nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
 
             } else {
@@ -75,7 +74,7 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
             }
         }
         while (nodoA != null) {
-            conjunto.agregar(nodoA.getDato());
+            conjunto.agregarAlFinal(nodoA.getDato());
             nodoA = nodoA.getSiguiente();
         }
         return conjunto;
@@ -83,8 +82,8 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
 
     @Override
     public boolean esSubconjuntoDe(TDAConjunto<T> otro) {
-        Nodo <T> nodoA = this.primero;
-        Nodo <T> nodoB = ((ConjuntoEnlazado<T>)otro).primero;
+        Nodo<T> nodoA = this.primero;
+        Nodo<T> nodoB = ((ConjuntoEnlazado<T>) otro).primero;
         int contador = 0;
         while (nodoA != null && nodoB != null) {
             int comparacion = nodoA.getDato().compareTo(nodoB.getDato());
@@ -98,6 +97,18 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
                 nodoB = nodoB.getSiguiente();
             }
         }
-        return( contador == this.tamaño()); // si todos los elementos de A, estan en B, el contador de la cantidad de elementos iguales vale lo mismo que el tamaño de A.
+        return (contador == this.tamaño()); // si todos los elementos de A, estan en B, el contador de la cantidad de elementos iguales vale lo mismo que el tamaño de A.
+    }
+
+    protected Nodo<T> ultimo;
+
+    private void agregarAlFinal(T dato) {
+        Nodo<T> nuevo = new Nodo<>(dato);
+        if (this.primero == null) {
+            this.primero = nuevo;
+        } else {
+            this.ultimo.setSiguiente(nuevo);
+        }
+        this.ultimo = nuevo;
     }
 }
