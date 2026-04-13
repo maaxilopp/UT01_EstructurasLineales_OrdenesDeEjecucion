@@ -32,24 +32,24 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
         while (nodoA != null && nodoB != null) {
             int comparacion = nodoA.getDato().compareTo(nodoB.getDato());
             if (comparacion == 0) {
-                conjunto.agregarAlFinal(nodoA.getDato());
+                conjunto.agregar(nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
                 nodoB = nodoB.getSiguiente();
 
             } else if (comparacion < 0) {
-                conjunto.agregarAlFinal( nodoA.getDato());
+                conjunto.agregar(nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
             } else {
-                conjunto.agregarAlFinal( nodoB.getDato());
+                conjunto.agregar(nodoB.getDato());
                 nodoB = nodoB.getSiguiente();
             }
         }
         while (nodoA != null) {
-            conjunto.agregarAlFinal(nodoA.getDato());
+            conjunto.agregar(nodoA.getDato());
             nodoA = nodoA.getSiguiente();
         }
         while (nodoB != null) {
-            conjunto.agregarAlFinal( nodoB.getDato());
+            conjunto.agregar(nodoB.getDato());
             nodoB = nodoB.getSiguiente();
         }
         return conjunto;
@@ -63,7 +63,7 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
         while (nodoA != null && nodoB != null) {
             int comparacion = nodoA.getDato().compareTo(nodoB.getDato());
             if (comparacion == 0) {
-               conjunto.agregarAlFinal(nodoA.getDato());
+                conjunto.agregar(nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
                 nodoB = nodoB.getSiguiente();
             } else if (comparacion < 0) {
@@ -86,7 +86,7 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
                 nodoA = nodoA.getSiguiente();
                 nodoB = nodoB.getSiguiente();
             } else if (comparacion < 0) {
-                conjunto.agregarAlFinal( nodoA.getDato());
+                conjunto.agregar(nodoA.getDato());
                 nodoA = nodoA.getSiguiente();
 
             } else {
@@ -94,7 +94,7 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
             }
         }
         while (nodoA != null) {
-            conjunto.agregarAlFinal(nodoA.getDato());
+            conjunto.agregar(nodoA.getDato());
             nodoA = nodoA.getSiguiente();
         }
         return conjunto;
@@ -117,17 +117,6 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
         }
         return nodoA == null;
     }
-
-    protected Nodo<T> ultimo;
-
-    public void agregarAlFinal(T dato) {
-        Nodo<T> nuevo = new Nodo<>(dato);
-        if (this.primero == null) {
-            this.primero = nuevo;
-            this.ultimo = nuevo;
-        } else {
-            this.ultimo.setSiguiente(nuevo);
-            this.ultimo = nuevo;
-        }
-    }
 }
+
+

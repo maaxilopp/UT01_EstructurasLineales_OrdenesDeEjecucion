@@ -21,9 +21,10 @@ POSTCONDICIONES:
                     -Todos los elementos del conjunto de salida deben estar en al menos uno de los conjuntos de entrada
                     -Los dos conjuntos de entrada permanecen iguales luego de la ejecución del programa
 
-PSEUDOCODIGO:
 
-INTERSECCION(conjuntoA, conjuntoB):
+PSEUDOCÓDIGO:
+
+UNION(conjuntoA, conjuntoB):
     resultado = conjunto vacío
     nodoA = primer elemento de conjuntoA
     nodoB = primer elemento de conjuntoB
@@ -34,11 +35,22 @@ INTERSECCION(conjuntoA, conjuntoB):
             avanzar nodoA
             avanzar nodoB
         SINO SI nodoA < nodoB:
+            agregar nodoA a resultado
             avanzar nodoA
         SINO:
+            agregar nodoB a resultado
             avanzar nodoB
 
+    MIENTRAS nodoA != null:
+        agregar nodoA a resultado
+        avanzar nodoA
+
+    MIENTRAS nodoB != null:
+        agregar nodoB a resultado
+        avanzar nodoB
+
     RETORNAR resultado
+
 
 ESPECIFICACIÓN CASOS DE PRUEBA:
                                   A = {1,2,3} ; B = {2,4,9,112} ; C = {1, 2, 3, 4, 9, 112}
@@ -61,6 +73,7 @@ ORDEN DE EJECUCIÓN DEL ALGORITMO: El algoritmo es de Orden lineal O(n),tiene un
                                   el orden lineal del algoritmo y se expresa como O(n) igualmente pero no es el comportamiento más
                                   tipico y podria resultar engañoso.
 
-                                  MEJOR CASO: Si almenos una de las listas es vacía, el primer while no se ejecuta y queda de O(1).
+                                  MEJOR CASO: Si A es vacía y B tiene m elementos, igual tenés que agregar/copiar los m elementos al resultado--> O(m).
+                                              Si B es vacía y A tiene n elementos --> O(n).
 
-                                  PEOR CASO: Las dos listas contienen elementos, O(n).
+                                  PEOR CASO: Θ(n + m) (por ejemplo, listas intercaladas, o ninguna vacía, etc.).

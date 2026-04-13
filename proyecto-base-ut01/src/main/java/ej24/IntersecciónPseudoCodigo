@@ -21,10 +21,9 @@ POSTCONDICIONES: - El conjunto de salida está ordenado y no contiene elementos 
                  - Todos los elementos del conjunto de salida pertenecen a ambos de los conjuntos de entrada
                  - En caso que ningun elemento coincida entre los conjuntos, retornará un conjunto vacío
                  - Ninguno de los conjuntos de entrada son modificados
+PSEUDOCODIGO:
 
-PSEUDOCÓDIGO:
-
-UNION(conjuntoA, conjuntoB):
+INTERSECCION(conjuntoA, conjuntoB):
     resultado = conjunto vacío
     nodoA = primer elemento de conjuntoA
     nodoB = primer elemento de conjuntoB
@@ -35,21 +34,12 @@ UNION(conjuntoA, conjuntoB):
             avanzar nodoA
             avanzar nodoB
         SINO SI nodoA < nodoB:
-            agregar nodoA a resultado
             avanzar nodoA
         SINO:
-            agregar nodoB a resultado
             avanzar nodoB
 
-    MIENTRAS nodoA != null:
-        agregar nodoA a resultado
-        avanzar nodoA
-
-    MIENTRAS nodoB != null:
-        agregar nodoB a resultado
-        avanzar nodoB
-
     RETORNAR resultado
+
 
 ESPECIFICACIÓN CASOS DE PRUEBA:
                                   A = {1,2,3} ; B = {2,4,9,112} ; C = {2}
@@ -64,7 +54,6 @@ ORDEN DE EJECUCIÓN: Al igual que unión, es de orden lineal, O(n), ya que hay u
                     el crecimiento es O(n + s), siendo n la cantidad de elementos de a y s la cantidad
                     de elementos de b, se puede resumir como O(n).
 
-PEOR CASO: O(n), las listas A y B no son vacias y no hay elementos en común
+PEOR CASO: O(n+s)=O(n), las listas A y B no son vacias y no hay elementos en común
 
 MEJOR CASO: O(1), almenos una lista es vacía.
-
