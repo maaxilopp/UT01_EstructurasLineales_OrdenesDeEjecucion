@@ -23,39 +23,23 @@ POSTCONDICIONES:
 
 PSEUDOCODIGO:
 
-proc union(lista a, lista b){
-  R <-- lista vacia
+INTERSECCION(conjuntoA, conjuntoB):
+    resultado = conjunto vacío
+    nodoA = primer elemento de conjuntoA
+    nodoB = primer elemento de conjuntoB
 
-  i =0
-  j= 0
+    MIENTRAS nodoA != null Y nodoB != null:
+        SI nodoA == nodoB:
+            agregar nodoA a resultado
+            avanzar nodoA
+            avanzar nodoB
+        SINO SI nodoA < nodoB:
+            avanzar nodoA
+        SINO:
+            avanzar nodoB
 
-  mientras i < tamaño(A) y j < tamaño(B)
-    si (a.obtener(i) == b .obtener(j))
-        R.agregar(a.obtener(i))
-        i ++
-        j ++
-    sino si (a.obtener(i) < b.obtener(j))
-        R.agregar(a.obtener(i))
-        i++
-    sino
-        R.agregar(b.obtener(j))
-        j++
-    finsi
-    finmientras
+    RETORNAR resultado
 
-    mientras i < tamaño(A)
-        R.agregar(a.obtener(i))
-        i ++
-    finmientras
-
-    mientras j < tamaño(B)
-        R.agregar(b.obtener(j))
-        j ++
-    finmientras
-
-    return R
-
-}
 ESPECIFICACIÓN CASOS DE PRUEBA:
                                   A = {1,2,3} ; B = {2,4,9,112} ; C = {1, 2, 3, 4, 9, 112}
                                   A = {} ; B = {9} ; C = {9}

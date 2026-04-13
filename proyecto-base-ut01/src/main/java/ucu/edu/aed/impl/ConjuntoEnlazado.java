@@ -120,7 +120,7 @@ public class ConjuntoEnlazado<T extends Comparable<T>> extends ListaEnlazada <T>
 
     protected Nodo<T> ultimo;
 
-    private void agregarAlFinal(T dato) {
+    public void agregarAlFinal(T dato) {
         Nodo<T> nuevo = new Nodo<>(dato);
         if (this.primero == null) {
             this.primero = nuevo;

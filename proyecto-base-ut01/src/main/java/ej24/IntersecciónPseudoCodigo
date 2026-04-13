@@ -24,25 +24,32 @@ POSTCONDICIONES: - El conjunto de salida está ordenado y no contiene elementos 
 
 PSEUDOCÓDIGO:
 
-public void interseccionDeDosConjuntos(lista a, lista b){
-lista c = nueva lista enlazada();
-int i = 0;
-int j = 0;
-while(i < tamaño_a && i < tamaño_b){
-    if(a.obtener(i) == b.obtener(j)){
-        c.meter(a.obtener(i));
-        i ++;
-        j ++;
-        }
-    else if(a.obtener(i) < b.obtener(j)){
-        i++
-    }
-    else{
-        j++
-        }
-    }
-    return c;
-    }
+UNION(conjuntoA, conjuntoB):
+    resultado = conjunto vacío
+    nodoA = primer elemento de conjuntoA
+    nodoB = primer elemento de conjuntoB
+
+    MIENTRAS nodoA != null Y nodoB != null:
+        SI nodoA == nodoB:
+            agregar nodoA a resultado
+            avanzar nodoA
+            avanzar nodoB
+        SINO SI nodoA < nodoB:
+            agregar nodoA a resultado
+            avanzar nodoA
+        SINO:
+            agregar nodoB a resultado
+            avanzar nodoB
+
+    MIENTRAS nodoA != null:
+        agregar nodoA a resultado
+        avanzar nodoA
+
+    MIENTRAS nodoB != null:
+        agregar nodoB a resultado
+        avanzar nodoB
+
+    RETORNAR resultado
 
 ESPECIFICACIÓN CASOS DE PRUEBA:
                                   A = {1,2,3} ; B = {2,4,9,112} ; C = {2}
