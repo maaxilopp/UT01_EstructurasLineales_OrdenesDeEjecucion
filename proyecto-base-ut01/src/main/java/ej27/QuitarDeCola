@@ -12,7 +12,7 @@ como la cola es circular, se usa módulo para que, si llega al final del vector,
 - Pseudocódigo:
 
 QuitarDeCola()
-    Si vacía entonces
+    Si tope == 0 entonces
         Devolver nulo
 
     SiNo
@@ -27,10 +27,10 @@ QuitarDeCola()
             tope <-- tope - 1
             Devolver elemento
     FinSi
-
+fin
 
 ORDEN DE EJECUCIÓN DEL ALGORITMO: O(1). Porque el algoritmo siempre realiza la misma cantidad de operaciones,
-sin importar cuántos elementos haya en la cola. Solo tiene que eliminar el último (no hay bucles).
+sin importar cuántos elementos haya en la cola. Solo tiene que eliminar el primero (no hay bucles).
 Hace solamente:
 
 una comparación para ver si está vacía,

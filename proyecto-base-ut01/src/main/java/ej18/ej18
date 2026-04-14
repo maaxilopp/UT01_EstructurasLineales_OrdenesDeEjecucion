@@ -3,7 +3,7 @@ utilización.
 Nodo<T> quitar(T dato)
 
 - Parámetros de entrada: elemento a eliminar (dato)
-- Resultado: Devuelve el elemento retirado o null si no estaba en la lista.
+- Resultado: Devuelve el nodo del elemento retirado o null si no estaba en la lista.
 
 Tendríamos que tener cuidado con el campo siguiente del elemento eliminado porque sigue apuntando al que le seguía. Para evitar confusiones o posible bugs
 hay que hacer un nodoEliminado.setSiguiente(null)
@@ -17,7 +17,7 @@ boolean eliminar(T dato)
 3. Otros comportamientos posibles (a definir).
 
 Podría ser útil un método para eliminar todos los elementos iguales
-int eliminarTodos(T dato)
+int eliminarTodos(T dato).
 
 -Parámetros de entrada: dato que se quiere eliminar
 -Resultado: devuelve cuantos elementos se eliminaron

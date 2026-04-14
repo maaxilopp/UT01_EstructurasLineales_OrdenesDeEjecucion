@@ -9,8 +9,8 @@ public class BalanceDeCorchetes {
         for (int i = 0; i < listaDeEntrada.size(); i++) {
             char elemento = listaDeEntrada.get(i);
 
-            if (elemento != '}' && elemento != '{') {
-                throw new RuntimeException("La pila solo almacena corchetes");
+            if ((elemento != '}') && (elemento != '{')) {
+                throw new RuntimeException("ERROR: Carácter inválido: " + elemento);
             }
             else if (elemento == '}') {
                 if (pila.tope() == null) {

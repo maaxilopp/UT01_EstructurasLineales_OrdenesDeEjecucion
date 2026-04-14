@@ -18,7 +18,7 @@ proc PoneEnCola(unElemento){
 if tope = largoArreglo
     mostrar "cola llena"
 else
-    if cola.esVacia = true
+    if tope == 0;
         primero <-- 0
         ultimo <-- 0
     else

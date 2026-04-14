@@ -9,7 +9,7 @@ public class ControlCorchetes {
 
         for (char elemento : entrada) {
             if ((elemento != '}') && (elemento != '{')) {
-                continue; //ignorar
+                throw new RuntimeException("ERROR: Carácter inválido: " + elemento);
             }
             if (elemento == '}') {
                 if (pilaCorchetes.isEmpty()) {

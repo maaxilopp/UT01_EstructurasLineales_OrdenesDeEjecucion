@@ -16,13 +16,7 @@ public class Biblioteca {
     }
 
     public void agregarLibro(Libro libro) {
-        Predicate<Libro> criterio = new Predicate<Libro>() {
-            @Override
-            public boolean test(Libro l) {
-                return l.getCodigo().equals(libro.getCodigo());
-            }
-        };
-        Libro existente = catalogo.buscar(criterio);
+        Libro existente = catalogo.buscar(l -> l.getCodigo().equals(libro.getCodigo()));
         if (existente == null) {
             catalogo.agregar(libro);
         } else {
@@ -30,14 +24,9 @@ public class Biblioteca {
         }
     }
 
+
     public void removerLibro(Libro libro) {
-        Predicate<Libro> criterio = new Predicate<Libro>() {
-            @Override
-            public boolean test(Libro l) {
-                return l.getCodigo().equals(libro.getCodigo());
-            }
-        };
-        Libro existente = catalogo.buscar(criterio);
+        Libro existente = catalogo.buscar(l -> l.getCodigo().equals(libro.getCodigo()));
         if (existente == null) {
             System.out.println("El libro no existe en el catalogo");
         } else {
@@ -73,6 +62,7 @@ public class Biblioteca {
     }
 
     public boolean devolverLibro(String codigo, int cantidad) {
+        if (cantidad <= 0) return false;
         Libro existente = buscarLibro(codigo);
         if (existente == null) return false;
         existente.agregarEjemplares(cantidad);

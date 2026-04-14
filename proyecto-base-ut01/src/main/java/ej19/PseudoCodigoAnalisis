@@ -72,7 +72,8 @@ ORDEN DE EJECUCIÓN DEL ALGORITMO: Lineal O(n), tiene un bucle for que realiza u
 
 PEOR CASO: O(n),  El bucle recorre los n elementos completos de la lista. Cada iteración
                   realiza operaciones constantes O(1), por lo tanto el total es O(n).
-                  Por ejemplo, en el caso de '{{{'', la pila almacena 3, osea n elementos.
+                  Considerando el espacio adicional, sería O(n) en el peor caso, porque la pila
+                  puede llegar a almacenar todos los elementos si son todos {.
 
 MEJOR CASO: O(1), El primer elemento ya es un corchete de cierre y la pila está vacía,
                   por lo que retorna false inmediatamente sin recorrer el resto de la lista,
