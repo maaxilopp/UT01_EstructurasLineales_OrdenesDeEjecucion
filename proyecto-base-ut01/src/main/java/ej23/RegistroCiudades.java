@@ -23,7 +23,7 @@ public class RegistroCiudades {
     }
 
     public void listarSucursales(){
-        for (int i = 0; i < sucursales.tamaño(); i++) {
+        for (int i = sucursales.tamaño() - 1; i >= 0; i--) {
             System.out.print(sucursales.obtener(i) + " , ");
         }
     }

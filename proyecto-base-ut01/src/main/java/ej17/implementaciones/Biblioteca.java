@@ -38,16 +38,6 @@ public class Biblioteca {
         return catalogo.buscar(l -> l.getCodigo().equals(codigo));
     }
 
-    public void mostrarCatalogo() {
-        for (int i = 0; i < catalogo.tamaño(); i++) {
-            Libro libro = catalogo.obtener(i);
-            System.out.println("Titulo: " + libro.getTitulo()
-                    + " | Codigo: " + libro.getCodigo()
-                    + " | Precio: " + libro.getPrecio()
-                    + " | Stock: " + libro.getStock());
-        }
-    }
-
     public boolean prestarLibro(String codigo, int cantidad) {
         Libro existente = buscarLibro(codigo);
         if (existente == null) return false;
